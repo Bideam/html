@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+</head>
+<!--动画渐变css-->
+<style type="text/css">
+p{font-size:16px;}
+#try{background-color:#F00;}
+</style>
+
+<!--lightbox的css-->
+<style>
+
+#overlay{
+	position:fixed;
+	top:0px;
+	left:0px;
+	height:100%;
+	width:100%;
+	background:#000 no-repeat scroll center center;
+}
+
+#lightbox{
+	position:fixed;
+}
+
+</style>
+
+<!--滚动渐变器的css-->
+<style>
+#fader{
+	position: relative;
+}
+#fader .to{
+	display:none;
+	position:absolute;
+	left:0px;
+
+}
+</style>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	$("#cl").click(function(){
+		$('h4').animate({fontSize:'30px'},2000,'linear');
+		$('p:first').animate({height:'10px',color:'green'},{duration:'slow',easing:'swing',queue:'false'});
+		$('p').animate({fontSize:'30px'},3000,'swing');
+		$("p:last").hide().slideDown('slow').fadeOut(2000);
+	});
+});
+</script>
+<script>
+$(function(){
+	$('a.lightbox').click(function(){
+		$('body').css('overflow-y','hidden');
+		
+		$('<div id="overlay"></div>')
+		.css('top',$(document).scrollTop())
+		.css('opacity','0')
+		.animate({'opacity':'0.5'},'slow')
+		.appendTo('body');
+		
+		$('<div id="lightbox"></div>')
+		.css('z-index','200')
+		.fadeIn('200')
+		.appendTo('body');
+		
+		$('<img>').attr('src',$(this).attr('href'))
+		.load(function(){
+			positionLightboxImage();
+		})
+		.click(function(){
+			removeLightbox();
+		})
+		.appendTo("#lightbox");
+	
+		return false;
+	});
+	
+	function positionLightboxImage(){
+		var top =($(window).height()-$("#Lightbox").height())/2;
+		var left=($(window).width()-$("#Lightbox").width())/2;
+		$("#Lightbox")
+		.css({
+			'top':top+$(document).scrollTop(),
+			'left':left
+		})
+		.fadeIn();
+	}
+	
+	function removeLightbox(){
+		$('#overlay,#lightbox')
+		.fadeOut('slow',function(){
+			$(this).remove();
+			$('body').css('overflow-y','auto');
+		});
+	}
+});
+</script>
+<!--滚动渐变器的-->
+<script>
+$(function(){
+	$("#fader").hover(function(){
+	
+		$(this).find('img:eq(1)').stop(true,true).fadeIn();
+		
+	},function(){
+		$(this).find('img:eq(1)').fadeOut();
+		
+	});
+});
+</script>
+<body>
+<!--动画渐变-->
+<div id="try">
+<h4>渐变动画</h4>
+<p>动画队列</p>
+<p>dierjianbiandonghua</p>
+<p>链隐藏</p>
+<input type="button" id="cl" value="变形" />
+
+</div>
+<!--lightbox实现-->
+<a href="img_url_201110191035541519976798.jpg" class="lightbox" >pic</a>
+
+<!--滚动渐变器的实现-->
+<div>
+	<span id="fader">
+    	<img src="img_url_201110191035541519976798.jpg" alt="Glendatronix" />
+        <img class="to" src="QQ图片201410172000451.jpg" alt="Darth Fader" />
+        </span>
+</div>
+</body>
+</html>
