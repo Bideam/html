@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>瀑布流效果</title>
+</head>
+<style>
+body {
+background-color:#F6F6F6;
+}
+
+.container {
+width: 80%;
+margin: 0 auto;
+}
+
+.waterfall {
+-moz-column-count: 3;
+-webkit-column-count: 3;
+column-count: 3;
+-moz-column-width: 24em;
+-webkit-column-width: 24em;
+column-width: 24em;
+-moz-column-gap: 1em;
+-webkit-column-gap: 1em;
+column-gap: 1em;
+}
+
+.pin {
+padding: 1em;
+margin: 0 0.125em 1em;
+-moz-page-break-inside: avoid;
+-webkit-column-break-inside: avoid;
+break-inside: avoid;
+background: white;
+-moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+-webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+}
+.pin img {
+width: 100%;
+padding-bottom: 1em;
+margin-bottom: 0.5em;
+border-bottom: 1px solid #cccccc;
+}
+</style>
+<body>
+<div class="container">
+    <div class="waterfall">
+    
+        <div class="pin">
+            <img src="01.jpg" />
+            <p>1 convallis timestamp</p>
+        </div>
+        
+        <div class="pin">
+            2 Donec a fermentum nisi.
+        </div>
+        
+        <div class="pin">
+            <img src="1e7745cadd8fb383cb6f120d79e77632_b.jpg" />
+            <p>
+            3 Nullam eget lectus augue. Donec eu sem sit amet ligula
+            faucibus suscipit. Suspendisse rutrum turpis quis nunc
+            convallis quis aliquam mauris suscipit.
+            </p>
+        </div>
+        
+        <div class="pin">
+            <img src="1XK3788A-qMJ3clG8f.jpg" />
+            <p>
+            4 Donec a fermentum nisi. Integer dolor est, commodo ut
+            sagittis vitae, egestas at augue.
+            </p>
+        </div>
+        
+        <div class="pin">
+            <img src="02.jpg" />
+            <p>
+            5 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Sed feugiat consectetur pellentesque. Nam ac elit risus,
+            ac blandit dui. Duis rutrum porta tortor ut convallis.
+            Duis rutrum porta tortor ut convallis.
+            </p>
+        </div>
+        
+        <div class="pin">
+            <img src="2Y73988A-qJ43clHEf.jpg" />
+            <p>
+            6 Nullam eget lectus augue. Donec eu sem sit amet ligula
+            faucibus suscipit. Suspendisse rutrum turpis quis nunc
+            convallis quis aliquam mauris suscipit.
+            Duis rutrum porta tortor ut convallis.
+            </p>
+        </div>
+        
+        <div class="pin">
+            <img src="2Y73988A-qJ53clHNf.jpg" />
+            <p>
+            7 Nullam eget lectus augue.
+            </p>
+        </div>
+        
+        <div class="pin">
+            <p>
+            8 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Sed feugiat consectetur pellentesque.
+            </p>
+        </div>
+        
+        <div class="pin">
+            <img src="2Y83988A-qLD3clGXf.jpg" />
+            <p>
+            9 Donec a fermentum nisi. Integer dolor est, commodo ut
+            sagittis vitae, egestas at augue. Suspendisse id nulla
+            ac urna vestibulum mattis. Duis rutrum porta tortor ut convallis.
+            </p>
+        </div>
+        
+        <div class="pin">
+            <img src="03.jpg" />
+            <p>
+            10 Donec a fermentum nisi. Integer dolor est, commodo ut
+            sagittis vitae, egestas at augue. Suspendisse id nulla
+            ac urna vestibulum mattis.
+            </p>
+        </div>
+        
+        <div class="pin">
+            <img src="3X42788A-qHy3clGMf.jpg" />
+            <p>
+            11 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Sed feugiat consectetur pellentesque. Nam ac elit risus,
+            ac blandit dui. Duis rutrum porta tortor ut convallis.
+            </p>
+        </div>
+        
+        <div class="pin">
+            <img src="5zp2b88A-qHx3clGmf.jpg" />
+            <p>
+            12 Donec a fermentum nisi. Integer dolor est, commodo ut
+            sagittis vitae, egestas at augue. Suspendisse id nulla
+            ac urna vestibulum mattis.
+            </p>
+        </div>
+        
+        <div class="pin">
+            <img src="9b80b7c2222581171ee02e357ec13b5b_b.jpg" />
+            <p>
+            13 Donec a fermentum nisi. Integer dolor est, commodo ut
+            sagittis vitae, egestas at augue. Suspendisse id nulla
+            ac urna vestibulum mattis.
+            </p>
+        </div>
+        
+        <div class="pin">
+            <img src="9b6099ca2688ebd06252e69954419a3f_b.jpg" />
+            <p>
+            14 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Sed feugiat consectetur pellentesque. Nam ac elit risus,
+            ac blandit dui. Duis rutrum porta tortor ut convallis.
+            </p>
+        </div>
+        
+        <div class="pin">
+            <img src="33B57808XC61.jpg" />
+            <p>
+            15 Nullam eget lectus augue.
+            </p>
+        </div>
+        
+        <div class="pin">
+            <img src="http://dummyimage.com/640x16:9" />
+            <p>
+            16 Nullam eget lectus augue.
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
