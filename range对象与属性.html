@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>range对象与属性</title>
+</head>
+<script>
+function delectRangeContents(onlyContent){
+	var div=document.getElementById("div"),
+	rangeObj=document.createRange();
+	if(onlyContent)
+		rangeObj.selectNodeContents(div);
+	else
+		rangeObj.selectNode(div);
+	rangeObj.deleteContents();
+	}
+function deleteChar(){
+	var div=document.getElementById("div"),
+	textnode=div.firstChild,
+	rangeObj=document.createRange();
+	rangeObj.setStart(textnode,2);
+	rangeObj.setEnd(textnode,10);
+	rangeObj.deleteContents();
+}
+function Movebutton(){
+	var button=document.getElementById("button1"),
+	selection=document.getSelection();
+	if(selection.rangeCount>0){
+		var range=selection.getRangeAt(0);
+		range.insertNode(button);
+	}
+}
+function deleteselection(){
+	var selection=window.getSelection();
+	selection.deleteFromDocument();
+}
+function sle(){
+	var selection=window.getSelection();
+	alert(selection.toString());
+	}
+</script>
+<body>
+	<div id="div" style="background-color:#E0A0B0; width:300px; height:50px;">鼠标移到播放器上，右键 -属性，复制地址，下载</div>
+	<button onClick="delectRangeContents(true);">删除内容</button>
+    <button onClick="delectRangeContents(false);">删除元素</button>
+    <button onClick="deleteChar();">删除文字</button>
+    <button onClick="deleteselection();">随意删除选中对象</button>
+    <button onClick="sle();">弹窗选中</button>
+	<div id="insertdiv" style="width=400px; background-color:#e0f0d0;" onMouseUp="Movebutton();">sldgjiwekdlsajiew打开手机访问IE束带结发</div>
+    <button id="button1">按钮</button>
+</body>
+</html>
