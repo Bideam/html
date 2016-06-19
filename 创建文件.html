@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<head>
+	<title>创建文件</title>
+</head>
+<script type="text/javascript">
+function createFile(){
+	var size=document.getElementById('FileSize').value;
+	window.webkitRequestFileSystem(
+		PERSISTENT,
+		size,
+		function (fs){
+			//创建文件
+			var fileNmae=document.getElementById('FileName').value;
+			fs.root.getfile(
+				fileNmae,
+				{create:true},
+				//创建文件成功后执行的函数
+				function (fileEntry){
+					var text="文件完整路径："+fileEntry.fullPath+"<br>";
+					text+="文件名："+fileEntry.name+"<br>";
+					document.getElementById("result").innerHTML=text;
+				},
+				//创建文件失败是调用的函数
+				errorFileHandler);
+		},
+		//请求创建文件系统失败是所调用的函数
+		errorSystemHandler);
+}
+function errorFileHandler(e){
+	var msg='';
+	switch (e.code){
+		case FileError.QUOTA_EXCEEDED_ERR:
+			msg='文件系统所使用的储存空间的尺寸超过磁盘限额控制中指定的空间尺寸';
+			break;
+		case FileError.NOT_FOUND_ERR:
+			msg='未找到文件或目录';
+			break;
+		case FileError.SECURITY_ERR:
+			msg='操作不当引起的安全性错误';
+			break;
+		case FIleError.INVALID_MODIFICATION_ERR:
+			msg='对文件或目录所指定的操作不能被执行';
+			break;
+		case FileError.INVALID_STATE_ERR:
+			msg='指定的状态无效';
+			break;
+	};
+	document.getElementById('result').innerHTML='当前操作引发错误：'+msg;
+}
+function errorSystemHandler(e){
+	var msg='';
+	switch (e.code){
+		case FileError.QUOTA_EXCEEDED_ERR:
+			msg='system文件系统所使用的储存空间的尺寸超过磁盘限额控制中指定的空间尺寸';
+			break;
+		case FileError.NOT_FOUND_ERR:
+			msg='system未找到文件或目录';
+			break;
+		case FileError.SECURITY_ERR:
+			msg='system操作不当引起的安全性错误';
+			break;
+		case FIleError.INVALID_MODIFICATION_ERR:
+			msg='system对文件或目录所指定的操作不能被执行';
+			break;
+		case FileError.INVALID_STATE_ERR:
+			msg='system指定的状态无效';
+			break;
+	};
+	document.getElementById('result').innerHTML='当前操作引发错误：'+msg;
+}
+</script>
+
+<body>
+<h1>创建文件</h1>
+<form>
+	文件名:<input type="text" id="FileName" value="test.txt"><br></input>
+	文件大小:<input type="text" id="FileSize" value="1024">Bytes<br></input>
+	<input type="button" value="创建文件" onclick="createFile()"></input>
+</form>
+<output id="result"></output>
+</body>
+</html>
